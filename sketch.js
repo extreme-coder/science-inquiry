@@ -1,28 +1,28 @@
 function setup() {
-  createCanvas(600, 400);
+  createCanvas(1200, 800);
   p = new Projectile()
 }
 
 function draw() {
   background(94, 218, 255);
-  rect(0,375,600,25)
+  rect(0,750,1200,50)
   p.draw()
 }
 
 class Projectile{
   constructor(){
-    this.xPos = 10
-    this.yPos = 375
+    this.xPos = 20
+    this.yPos = 750
     this.objType = 'ball'
-    this.objWidth = 37.5
-    this.vel = 500
+    this.objWidth = 75
+    this.vel = 1000
     this.angle = 60
-    this.grav = 490
+    this.grav = 980
     this.cor = 1
   }
   
   setVel(vel){
-    this.vel = vel*50
+    this.vel = vel*100
   }
   
   setAngle(a){
@@ -30,13 +30,13 @@ class Projectile{
   }
   
   setGravity(g){
-    this.grav = g*50
+    this.grav = g*100
   }
   
   updateVars(){ //updates the velocities and positions every draw
     let xVel = this.vel*cos(radians(this.angle)) //x-component of velocity
     let yVel = this.vel*sin(radians(this.angle)) //y-component of velocity
-    if(this.yPos>=375&&frameCount>5){ //checks if ball makes contact with ground
+    if(this.yPos>=750&&frameCount>5){ //checks if ball makes contact with ground
       yVel = -yVel*this.cor //applies conservation of momentum to bounce ball upward
     } else {
       yVel -= this.grav/60 //continues gravitation acceleration

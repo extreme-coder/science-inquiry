@@ -12,7 +12,21 @@ class Projectile{
     this.area = PI * (this.objWidth / 2) ^ 2 //referring to cross-sectional area
     this.fluidDensity = 3000/1000000
   }
-  
+
+  setVarsToDefault() {
+    this.xPos = 20
+    this.yPos = 750
+    this.objType = 'ball'
+    this.objWidth = 75
+    this.vel = 1000
+    this.angle = 60
+    this.grav = 980
+    this.cor = 1
+    this.dragCoef = 0.5
+    this.area = PI * (this.objWidth / 2) ^ 2 //referring to cross-sectional area
+    this.fluidDensity = 3000/1000000
+  }
+
   setVel(vel){
     this.vel = vel*100
   }
@@ -53,22 +67,25 @@ class Projectile{
   draw(){
     fill(0)
     stroke(0)
-    circle(this.xPos+(this.objWidth/2),this.yPos-(this.objWidth/2),this.objWidth)
-    this.updateVars()
+    circle(this.xPos + (this.objWidth / 2), this.yPos - (this.objWidth / 2), this.objWidth)
+    if (simPlaying) {
+      this.updateVars()
+    } else {
+      this.setVarsToDefault()
+    }
   }
 }
 
 function setup() {
   createCanvas(1200, 800);
   p = new Projectile()
-  test = 600
+  simPlaying = false
 }
 
 function draw() {
   background(94, 218, 255);
   rect(0,750,1200,50)
   p.draw()
-  line(test,0,test,800)
 }
 
-let test
+let simPlaying

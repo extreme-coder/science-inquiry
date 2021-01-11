@@ -91,11 +91,13 @@ function draw() {
   p.draw()
 }
 
-function keyPressed(keyCode) {
-  if (simPlaying) {
-    simPlaying = false
-  } else {
-    simPlaying = true
+function keyPressed() {
+  if (key == ' ') {
+    if (simPlaying) {
+      simPlaying = false
+    } else {
+      simPlaying = true
+    }
   }
 }
 

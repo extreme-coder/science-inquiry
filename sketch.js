@@ -10,7 +10,8 @@ class Projectile{
     this.cor = 1
     this.dragCoef = 0.5
     this.area = PI * (this.objWidth / 2) ^ 2 //referring to cross-sectional area
-    this.fluidDensity = 3000/1000000
+    this.fluidDensity = 1.2 / 1000000
+    this.isLaunched = false
   }
 
   setVarsToDefault() {
@@ -24,7 +25,8 @@ class Projectile{
     this.cor = 1
     this.dragCoef = 0.5
     this.area = PI * (this.objWidth / 2) ^ 2 //referring to cross-sectional area
-    this.fluidDensity = 3000/1000000
+    this.fluidDensity = 1.2 / 1000000
+    this.isLaunched = false
   }
 
   setVel(vel){
@@ -52,11 +54,12 @@ class Projectile{
   
   updateVars() { //updates the velocities and positions every draw
     let xVel = this.vel*cos(radians(this.angle)) //x-component of velocity
-    let yVel = this.vel*sin(radians(this.angle)) //y-component of velocity
-    if(this.yPos>=750&&frameCount>5){ //checks if ball makes contact with ground
+    let yVel = this.vel * sin(radians(this.angle)) //y-component of velocity
+    if(this.yPos>=750&&this.isLaunched){ //checks if ball makes contact with ground
       yVel = -yVel*this.cor //applies conservation of momentum to bounce ball upward
     } else {
-      yVel -= this.grav/60 //continues gravitation acceleration
+      yVel -= this.grav / 60 //continues gravitation acceleration
+      this.isLaunched = true
     }
     this.xPos += xVel/60 //updates positions
     this.yPos -= yVel/60
@@ -86,6 +89,14 @@ function draw() {
   background(94, 218, 255);
   rect(0,750,1200,50)
   p.draw()
+}
+
+function keyPressed(keyCode) {
+  if (simPlaying) {
+    simPlaying = false
+  } else {
+    simPlaying = true
+  }
 }
 
 let simPlaying

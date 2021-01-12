@@ -8,7 +8,7 @@ class Projectile{
     this.objType = 'ball'
     this.objWidth = 75
     this.vel = 1000
-    this.angle = 60
+    this.angle = 30
     this.grav = 980
     this.cor = 1
     this.dragCoef = 0.5
@@ -22,8 +22,8 @@ class Projectile{
     this.yPos = 750
     this.objType = 'ball'
     this.objWidth = 75
-    this.vel = 1000
-    this.angle = 60
+    this.vel = velSlider.value()
+    this.angle = angleSlider.value()
     this.grav = 980
     this.cor = 1
     this.dragCoef = 0.5
@@ -87,6 +87,11 @@ function setup() {
   createCanvas(1200, 800);
   p = new Projectile()
   simPlaying = false
+  //create sliders:
+  velSlider = createSlider(500, 1500, 1000, 50)
+  velSlider.position(10, 10)
+  angleSlider = createSlider(0, 90, 30, 5)
+  angleSlider.position(10,50)
 }
 
 function draw() {

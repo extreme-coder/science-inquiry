@@ -1,3 +1,6 @@
+let simPlaying
+let backgroundVal = 0
+
 class Projectile{
   constructor(){
     this.xPos = 20
@@ -67,7 +70,8 @@ class Projectile{
     this.angle = degrees(atan2(yVel, xVel))
   }
   
-  draw(){
+  draw() {
+    colorMode(RGB)
     fill(0)
     stroke(0)
     circle(this.xPos + (this.objWidth / 2), this.yPos - (this.objWidth / 2), this.objWidth)
@@ -86,9 +90,12 @@ function setup() {
 }
 
 function draw() {
-  background(94, 218, 255);
+  console.log(backgroundVal)
+  colorMode(HSB)
+  background(backgroundVal%360,100,100,1);
   rect(0,750,1200,50)
   p.draw()
+  backgroundVal+=1
 }
 
 function keyPressed() {
@@ -100,5 +107,3 @@ function keyPressed() {
     }
   }
 }
-
-let simPlaying

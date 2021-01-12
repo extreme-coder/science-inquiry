@@ -71,14 +71,27 @@ class Projectile{
   }
   
   draw() {
+    //draw object
     colorMode(RGB)
     fill(0)
     stroke(0)
+    strokeWeight(1)
     circle(this.xPos + (this.objWidth / 2), this.yPos - (this.objWidth / 2), this.objWidth)
     if (simPlaying) {
       this.updateVars()
     } else {
       this.setVarsToDefault()
+    }
+    //draw velocity vector
+    if (simPlaying == false) {
+      let centerX = this.xPos + (this.objWidth / 2)
+      let centerY = this.yPos - (this.objWidth / 2)
+      let arrowX = this.vel/5 * cos(radians(this.angle))
+      let arrowY = this.vel / 5 * sin(radians(this.angle))
+      let tipX = centerX + arrowX
+      let tipY = centerY - arrowY
+      strokeWeight(8)
+      line(centerX, centerY, tipX, tipY)
     }
   }
 }

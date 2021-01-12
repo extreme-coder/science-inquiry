@@ -32,18 +32,6 @@ class Projectile{
     this.isLaunched = false
   }
 
-  setVel(vel){
-    this.vel = vel*100
-  }
-  
-  setAngle(a){
-    this.angle = a
-  }
-  
-  setGravity(g){
-    this.grav = g*100
-  }
-
   airResistance(xVel, yVel) {
     let dragForce = this.dragCoef * this.fluidDensity * (abs(this.vel) ^ 2) * this.area / 2 //determine drag force
     let newXVel = xVel - dragForce * cos(radians(this.angle)) / 60 //apply drag to x velocity
@@ -102,9 +90,9 @@ function setup() {
   simPlaying = false
   //create sliders:
   velSlider = createSlider(500, 1500, 1000, 50)
-  velSlider.position(10, 10)
+  velSlider.position(80, 40)
   angleSlider = createSlider(0, 90, 30, 5)
-  angleSlider.position(10,50)
+  angleSlider.position(80, 65)
 }
 
 function draw() {
@@ -113,7 +101,16 @@ function draw() {
   background(backgroundVal%360,100,100,1);
   rect(0,750,1200,50)
   p.draw()
-  backgroundVal+=1
+  backgroundVal += 1
+  //draw sliders:
+  strokeWeight(1)
+  textSize(24)
+  text('Launch Values', 10, 30)
+  textSize(18)
+  text('Velocity:', 10, 55)
+  text(p.vel/100 + ' m/s', 215, 55)
+  text('Angle:', 10, 80)
+  text(p.angle + ' deg', 215, 80)
 }
 
 function keyPressed() {

@@ -79,8 +79,14 @@ class Projectile{
       let arrowY = this.vel / 5 * sin(radians(this.angle))
       let tipX = centerX + arrowX
       let tipY = centerY - arrowY
+      let leftTipX = 30 * sin(radians(this.angle - 45))
+      let leftTipY = 30 * cos(radians(this.angle - 45))
+      let rightTipX = 30 * sin(radians(this.angle - 135))
+      let rightTipY = 30 * cos(radians(this.angle - 135))
       strokeWeight(8)
       line(centerX, centerY, tipX, tipY)
+      line(tipX, tipY, tipX+leftTipX, tipY+leftTipY)
+      line(tipX, tipY, tipX+rightTipX, tipY+rightTipY)
     }
   }
 }

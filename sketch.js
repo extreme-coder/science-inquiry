@@ -46,8 +46,9 @@ class Projectile{
   updateVars() { //updates the velocities and positions every draw
     let xVel = this.vel*cos(radians(this.angle)) //x-component of velocity
     let yVel = this.vel * sin(radians(this.angle)) //y-component of velocity
-    if(this.yPos>=750&&this.isLaunched){ //checks if ball makes contact with ground
-      yVel = -yVel*this.cor //applies conservation of momentum to bounce ball upward
+    if (this.yPos >= 760 && this.isLaunched) { //checks if ball makes contact with ground
+      yVel = -yVel * this.cor //applies conservation of momentum to bounce ball upward
+      xVel = xVel * this.cor
     } else {
       yVel -= this.grav / 60 //continues gravitation acceleration
       this.isLaunched = true
@@ -98,7 +99,6 @@ function setup() {
 }
 
 function draw() {
-  console.log(backgroundVal)
   colorMode(HSB)
   background(backgroundVal%360,100,100,1);
   rect(0,750,1200,50)

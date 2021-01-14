@@ -25,7 +25,7 @@ class Projectile{
     this.vel = velSlider.value()
     this.angle = angleSlider.value()
     this.grav = 980
-    this.cor = 1
+    this.cor = corSlider.value()
     this.dragCoef = 0.5
     this.area = PI * (this.objWidth / 2) ^ 2 //referring to cross-sectional area
     this.fluidDensity = 1.2 / 1000000
@@ -93,6 +93,8 @@ function setup() {
   velSlider.position(80, 40)
   angleSlider = createSlider(0, 90, 30, 5)
   angleSlider.position(80, 65)
+  corSlider = createSlider(0, 1, 1, 0.05)
+  corSlider.position(350, 40)
 }
 
 function draw() {
@@ -106,11 +108,14 @@ function draw() {
   strokeWeight(1)
   textSize(24)
   text('Launch Values', 10, 30)
+  text('Projectile Values', 275, 30)
   textSize(18)
   text('Velocity:', 10, 55)
-  text(p.vel/100 + ' m/s', 215, 55)
+  text(velSlider.value()/100 + ' m/s', 215, 55)
   text('Angle:', 10, 80)
-  text(p.angle + ' deg', 215, 80)
+  text(angleSlider.value() + ' deg', 215, 80)
+  text('Elasticity:', 275, 55)
+  text(p.cor*100 + '%', 480, 55)
 }
 
 function keyPressed() {

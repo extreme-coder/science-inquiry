@@ -46,7 +46,7 @@ class Projectile{
   updateVars() { //updates the velocities and positions every draw
     let xVel = this.vel*cos(radians(this.angle)) //x-component of velocity
     let yVel = this.vel * sin(radians(this.angle)) //y-component of velocity
-    if (this.yPos >= 760 && this.isLaunched) { //checks if ball makes contact with ground
+    if (this.yPos >= 750 && this.isLaunched) { //checks if ball makes contact with ground
       yVel = -yVel * this.cor //applies conservation of momentum to bounce ball upward
       xVel = xVel * this.cor
     } else {

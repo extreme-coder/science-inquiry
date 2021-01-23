@@ -102,6 +102,9 @@ function setup() {
   angleSlider.position(80, 65)
   corSlider = createSlider(0, 1, 1, 0.05)
   corSlider.position(350, 40)
+  surveyLink = createButton('Rate our simulator here!')
+  surveyLink.position(1025, 715)
+  surveyLink.mousePressed(redirect)
 }
 
 function draw() {
@@ -132,4 +135,8 @@ function keyPressed() {
       simPlaying = true
     }
   }
+}
+
+function redirect() {
+  window.location.href = "https://forms.gle/QKKwv12U6kee7rDy9";
 }

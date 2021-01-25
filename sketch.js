@@ -124,7 +124,9 @@ function draw() {
   text('Angle:', 10, 80)
   text(angleSlider.value() + ' deg', 215, 80)
   text('Elasticity:', 275, 55)
-  text(p.cor*100 + '%', 480, 55)
+  text(p.cor * 100 + '%', 480, 55)
+  //draw tutorial text
+  text('Press space to launch projectile. Use sliders to adjust values. Enjoy!', 600, 30)
 }
 
 function keyPressed() {

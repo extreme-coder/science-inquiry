@@ -96,11 +96,11 @@ function setup() {
   p = new Projectile()
   simPlaying = false
   //create sliders:
-  velSlider = createSlider(500, 1500, 1000, 50)
+  velSlider = createSlider(500, 1500, 1000, 5)
   velSlider.position(80, 40)
-  angleSlider = createSlider(0, 90, 30, 5)
+  angleSlider = createSlider(0, 90, 30, 1)
   angleSlider.position(80, 65)
-  corSlider = createSlider(0, 1, 1, 0.05)
+  corSlider = createSlider(0, 1, 1, 0.01)
   corSlider.position(350, 40)
   surveyLink = createButton('Rate our simulator here!')
   surveyLink.position(1025, 715)
@@ -132,7 +132,9 @@ function draw() {
   targetX = (((p.vel ** 2) * sin(radians(2 * p.angle))) / p.grav) + 57.5
   stroke(255, 0, 0)
   fill(255,0,0)
-  circle(targetX,750,50)
+  if (!simPlaying) {
+    circle(targetX,750,50)
+  }
 }
 
 function keyPressed() {

@@ -109,6 +109,8 @@ function setup() {
 
 function draw() {
   background("#02E0FF");
+  fill(0)
+  stroke(0)
   rect(0,750,1200,50)
   p.draw()
   backgroundVal += 1
@@ -125,7 +127,12 @@ function draw() {
   text('Elasticity:', 275, 55)
   text(p.cor * 100 + '%', 480, 55)
   //draw tutorial text
-  text('Welcome to our simulation! Press space to launch the projectile. Use \nsliders to adjust values like launching velocity, elasticity, etc. Hover over \nan object or slider to learn more about it. Enjoy!', 600, 30)
+  text('Welcome to our simulation! Press space to launch the projectile. Use \nsliders to adjust values like launching velocity, elasticity, etc. The red \ntarget shows where the ball will make first contact with the ground. \nHover over a slider to learn more about it. Enjoy!', 600, 30)
+  //draw target
+  targetX = (((p.vel ** 2) * sin(radians(2 * p.angle))) / p.grav) + 57.5
+  stroke(255, 0, 0)
+  fill(255,0,0)
+  circle(targetX,750,50)
 }
 
 function keyPressed() {

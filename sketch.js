@@ -108,8 +108,7 @@ function setup() {
 }
 
 function draw() {
-  colorMode(HSB)
-  background(backgroundVal%360,100,100,1);
+  background("#02E0FF");
   rect(0,750,1200,50)
   p.draw()
   backgroundVal += 1
@@ -126,7 +125,7 @@ function draw() {
   text('Elasticity:', 275, 55)
   text(p.cor * 100 + '%', 480, 55)
   //draw tutorial text
-  text('Press space to launch projectile. Use sliders to adjust values. Enjoy!', 600, 30)
+  text('Welcome to our simulation! Press space to launch the projectile. Use \nsliders to adjust values like launching velocity, elasticity, etc. Hover over \nan object or slider to learn more about it. Enjoy!', 600, 30)
 }
 
 function keyPressed() {

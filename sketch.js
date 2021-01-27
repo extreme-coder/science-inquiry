@@ -155,5 +155,5 @@ function keyPressed() {
 }
 
 function redirect() {
-  window.location.href = "https://forms.gle/QKKwv12U6kee7rDy9";
+  window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLScBXBssV-5RCwvGSH3-Vt9xNhDyqcYoXPvH7qGZpYMf7VtpMA/viewform?usp=sf_link";
 }

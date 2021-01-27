@@ -24,7 +24,7 @@ class Projectile{
     this.objWidth = 75
     this.vel = velSlider.value()
     this.angle = angleSlider.value()
-    this.grav = 980
+    this.grav = gravitySlider.value()*100
     this.cor = corSlider.value()
     this.dragCoef = 0.5
     this.area = PI * (this.objWidth / 2) ^ 2 //referring to cross-sectional area
@@ -97,13 +97,16 @@ function setup() {
   //create sliders:  
   velSlider = createSlider(500, 1500, 1000, 5)
   velSlider.position(80, 40)
-  velSlider.attribute('title','Controls the launching veolcity of the ball.')
+  velSlider.attribute('title','Controls the launching velocity of the ball.')
   angleSlider = createSlider(0, 90, 30, 1)
   angleSlider.position(80, 65)
   angleSlider.attribute('title','Controls the angle at which the ball is launched. What angle will launch the ball the farthest?')
   corSlider = createSlider(0, 1, 1, 0.01)
   corSlider.position(350, 40)
-  corSlider.attribute('title',"Controls how much of the ball's momentum is conserved each time it bounces.")
+  corSlider.attribute('title', "Controls how much of the ball's momentum is conserved each time it bounces.")
+  gravitySlider = createSlider(0, 20, 9.8, 0.2)
+  gravitySlider.position(350, 65)
+  gravitySlider.attribute('title',"Controls the gravitational acceleration on the ball(on Earth this is about 9.81 m/s^2). The mass of the projectile does not actually affect this!")
   surveyLink = createButton('Rate our simulator here!')
   surveyLink.position(1025, 715)
   surveyLink.mousePressed(redirect)
@@ -128,6 +131,8 @@ function draw() {
   text(angleSlider.value() + ' deg', 215, 80)
   text('Elasticity:', 275, 55)
   text(p.cor * 100 + '%', 480, 55)
+  text('Gravity:', 275, 80)
+  text(' '+(p.grav  / 100)+ ' m/s^2', 480, 80)
   //draw tutorial text
   text('Welcome to our simulation! Press space to launch the projectile. Use \nsliders to adjust values like launching velocity, elasticity, etc. The red \ntarget shows where the ball will make first contact with the ground. \nHover over a slider to learn more about it. Enjoy!', 600, 30)
   //draw target

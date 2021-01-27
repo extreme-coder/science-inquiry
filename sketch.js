@@ -48,7 +48,6 @@ class Projectile{
     let yVel = this.vel * sin(radians(this.angle)) //y-component of velocity
     if (this.yPos >= 750 && this.isLaunched) { //checks if ball makes contact with ground
       yVel = -yVel * this.cor //applies conservation of momentum to bounce ball upward
-      xVel = xVel * this.cor
     } else {
       yVel -= this.grav / 60 //continues gravitation acceleration
       this.isLaunched = true
@@ -95,13 +94,16 @@ function setup() {
   createCanvas(1200, 800);
   p = new Projectile()
   simPlaying = false
-  //create sliders:
+  //create sliders:  
   velSlider = createSlider(500, 1500, 1000, 5)
   velSlider.position(80, 40)
+  velSlider.attribute('title','Controls the launching veolcity of the ball.')
   angleSlider = createSlider(0, 90, 30, 1)
   angleSlider.position(80, 65)
+  angleSlider.attribute('title','Controls the angle at which the ball is launched. What angle will launch the ball the farthest?')
   corSlider = createSlider(0, 1, 1, 0.01)
   corSlider.position(350, 40)
+  corSlider.attribute('title',"Controls how much of the ball's momentum is conserved each time it bounces.")
   surveyLink = createButton('Rate our simulator here!')
   surveyLink.position(1025, 715)
   surveyLink.mousePressed(redirect)
